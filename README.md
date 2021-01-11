@@ -26,7 +26,8 @@ WHEN I refresh the page
 THEN the saved events persist
 ```
 
-Demo of the application:
-!(demo.gif)
+## Demo of the application:
 
-URL of the deployed application:
+![demo](demo.gif)
+
+## URL of the deployed application:
