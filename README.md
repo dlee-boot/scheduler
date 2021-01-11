@@ -31,3 +31,4 @@ THEN the saved events persist
 ![demo](demo.gif)
 
 ## URL of the deployed application:
+https://dlee-boot.github.io/scheduler/
