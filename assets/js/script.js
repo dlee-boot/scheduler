@@ -1,4 +1,4 @@
-
+// change color of description field
 var auditTasks = function () {
     $(".hour").each(function (index) {
       var taskTimeHour = moment($(this).text(), "h A");
@@ -31,8 +31,8 @@ $(".saveBtn").on("click", function () {
   localStorage.setItem(timeSlot, userInput);
 });
 
-//retrieve items from localStorage 
-//TODO - make loop if possible. prob need to put all into 1 array.
+// retrieve items from localStorage 
+// TODO - make loop if possible. prob need to put all into 1 array.
 $("#slot9 .description").val(localStorage.getItem("slot9"));
 $("#slot10 .description").val(localStorage.getItem("slot10"));
 $("#slot11 .description").val(localStorage.getItem("slot11"));
