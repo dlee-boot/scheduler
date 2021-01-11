@@ -1,3 +1,23 @@
+
+var auditTasks = function () {
+    $(".hour").each(function (index) {
+      var taskTimeHour = moment($(this).text(), "h A");
+      var nowTimeHour = moment().hour("h A");
+      var taskRowEl = $(this).parent().children(".description");
+  
+      // removes classes
+      taskRowEl.removeClass("future past present");
+  
+      if (taskTimeHour.isAfter(nowTimeHour)) {
+        taskRowEl.addClass("future");
+      } else if (taskTimeHour.isSame(nowTimeHour, "hour")) {
+        taskRowEl.addClass("present");
+      } else {
+        taskRowEl.addClass("past");
+      }
+    });
+  };
+  
 // search id 'currentDay' and display the current day
 $("#currentDay").text(moment().format("dddd, MMMM Do"));
 
@@ -11,8 +31,8 @@ $(".saveBtn").on("click", function () {
   localStorage.setItem(timeSlot, userInput);
 });
 
-//retrieve items from localStorage (TODO - make loop if possible)
-
+//retrieve items from localStorage 
+//TODO - make loop if possible. prob need to put all into 1 array.
 $("#slot9 .description").val(localStorage.getItem("slot9"));
 $("#slot10 .description").val(localStorage.getItem("slot10"));
 $("#slot11 .description").val(localStorage.getItem("slot11"));
@@ -23,25 +43,5 @@ $("#slot15 .description").val(localStorage.getItem("slot15"));
 $("#slot16 .description").val(localStorage.getItem("slot16"));
 $("#slot17 .description").val(localStorage.getItem("slot17"));
 
-function checkHour() {
-  //check each time slot
-  $(".time-block").each(function () {
-    //compare time slot with current hour
-    var slotHour = parseInt($(this).attr("id").replace("slot", ""));
-    var currentHour = moment().hour();
 
-    //change background color of description based on past/present/future time
-    if (moment(currentHour).isSame(moment(slotHour))) {
-      $(this).children(".description").removeClass("past future");
-      $(this).children(".description").addClass("present");
-    } else if (moment(currentHour).isAfter(moment(slotHour))) {
-      $(this).children(".description").removeClass("present future");
-      $(this).children(".description").addClass("past");
-    } else if (moment(currentHour).isBefore(moment(slotHour))) {
-      $(this).children(".description").removeClass("present past");
-      $(this).children(".description").addClass("future");
-    }
-  });
-}
-
-checkHour();
+auditTasks();  
