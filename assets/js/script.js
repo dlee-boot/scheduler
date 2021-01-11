@@ -4,7 +4,7 @@ $("#currentDay").text(moment().format("dddd, MMMM Do"));
 // listen for .saveBtn clicks, then save to localstorage
 $(".saveBtn").on("click", function () {
   //save field values
-  var userInput = $(this).siblings(".description").val();
+  var userInput = $(this).parent().children(".description").val().trim();
   var timeSlot = $(this).parent().attr("id");
 
   // save to localStorage
